@@ -18,7 +18,9 @@ if($requestPath != ''){
                 if(Usuario::validateBodyReq($_POST)){
                     $cliente = new Usuario($_POST);
                     $file = new Files("users.dat");
-                    $condition = $file->Save($cliente);
+                    if(!$file->GetData($cliente->email,$cliente->clave)){
+                        $condition = $file->Save($cliente);
+                    }
                 }
                 echo Response::constructResponse(getStatus($condition), getBodyRes($condition, "singin"));
             break;

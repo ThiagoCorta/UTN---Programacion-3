@@ -20,7 +20,6 @@ class Usuario{
         return true;
     }
 
-
 }
 
 
